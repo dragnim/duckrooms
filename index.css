@@ -504,7 +504,7 @@ body {
 
 /* ===== Topbar: full room name on its own line; no horizontal scroll ===== */
 #topbar {
-  align-items: flex-start;
+  align-items: center;
     row-gap: 0.15rem;
 }
 #left {
