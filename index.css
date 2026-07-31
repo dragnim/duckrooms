@@ -505,12 +505,10 @@ body {
 /* ===== Topbar: full room name on its own line; no horizontal scroll ===== */
 #topbar {
   align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 100%;
-  row-gap: 0.15rem;
+    row-gap: 0.15rem;
 }
 #left {
-  flex: 1 1 100%;
+  flex: 1 1 auto;
   font-size: 0.66rem;
   letter-spacing: 0;
   white-space: normal;
