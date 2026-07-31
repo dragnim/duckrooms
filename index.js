@@ -251,28 +251,21 @@ const react=b=>{
   }
 }
 
-// ===== Backrooms ambient hum: muted by default, toggled by the topbar speaker =====
-let _audioCtx, _humGain, _humOn = false
+// ===== Level soundtrack: looping MP3, muted/paused by default =====
+let _bgAudio, _soundOn = false
 function toggleSound() {
   const btn = document.getElementById('mute')
-  if (!_audioCtx) {
-    _audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-    const drone = _audioCtx.createOscillator()
-    drone.type = 'sawtooth'; drone.frequency.value = 120
-    const whine = _audioCtx.createOscillator()
-    whine.type = 'sine'; whine.frequency.value = 8400
-    const lp = _audioCtx.createBiquadFilter()
-    lp.type = 'lowpass'; lp.frequency.value = 300
-    _humGain = _audioCtx.createGain(); _humGain.gain.value = 0
-    const whineGain = _audioCtx.createGain(); whineGain.gain.value = 0.006
-    drone.connect(lp); lp.connect(_humGain)
-    whine.connect(whineGain); whineGain.connect(_humGain)
-    _humGain.connect(_audioCtx.destination)
-    drone.start(); whine.start()
+  if (!_bgAudio) {
+    _bgAudio = new Audio('01-oshkosh.mp3')
+    _bgAudio.loop = true
+    _bgAudio.volume = 0.5
   }
-  if (_audioCtx.state === 'suspended') _audioCtx.resume()
-  _humOn = !_humOn
-  _humGain.gain.linearRampToValueAtTime(_humOn ? 0.05 : 0, _audioCtx.currentTime + 0.4)
-  if (btn) btn.textContent = _humOn ? '🔊' : '🔇'
+  _soundOn = !_soundOn
+  if (_soundOn) {
+    _bgAudio.play().catch(() => {})
+  } else {
+    _bgAudio.pause()
+  }
+  if (btn) btn.textContent = _soundOn ? '🔊' : '🔇'
 }
 window.toggleSound = toggleSound
