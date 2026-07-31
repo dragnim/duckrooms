@@ -413,3 +413,11 @@ dialog { background: var(--back); color: var(--spot); }
    grid-line colour and re-establish the current-room highlight explicitly. */
 #mini { background: var(--wall); border-radius: 4px; }
 #mini td.now { background: var(--spot); }   /* current room: fluorescent highlight */
+
+
+/* ===== Readable sidebar text on the dark background (Duckrooms) ===== */
+/* The page is now dark, so the room heading, belt caption/labels and counters
+   need a light colour. Warm off-white fits the analog-horror tone. */
+#util, #left, #belt, #belt caption, #belt th, #side, #topbar, legend {
+  color: #fdf6c8;
+}
