@@ -102,7 +102,7 @@ const restore=()=>{
   ;(s.belt??[]).forEach(id=>{let g="mdMDj".indexOf(id[0]);if(~g)$$`#belt td`[g].appendChild(mkb(id))})
   return s
 }
-window.reset=()=>{localStorage.removeItem(KEY);location.reload()}   // wipe saved progress
+window.reset=()=>{localStorage.removeItem(KEY);try{sessionStorage.setItem('dr_snd',_soundOn?'1':'0')}catch(e){}location.reload()}   // wipe saved progress
 function toast(txt){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;bottom:2.2rem;transform:translateX(-50%);z-index:600;padding:0.5rem 1rem;background:rgba(20,18,8,0.92);color:#e9d84a;font-family:VCR,"VCR OSD Mono",monospace;font-size:1.1rem;letter-spacing:0.06em;border:2px solid #e9d84a;border-radius:6px;box-shadow:0 0 14px rgba(233,216,74,0.55);pointer-events:none;transition:opacity 0.3s;opacity:0';document.body.appendChild(t)}t.textContent=txt;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0'},1400)}
 window.cheat=(on=1)=>(cheating=on,`QA cheat ${on?"ON — walk into any met-prerequisite rune, unlocked door or apple to auto-take it (sealed ones still need their runes)":"off"}`)   // console QA aid
 const openask=(el,k)=>{askp.innerHTML=md(j[el.id].task);lb(k,j[el.id].expr??j[el.id].f);ask.b=el;aski.value="";$`#askr`.textContent="";$`#asks`.textContent="Submit";$$`#ask form button`.forEach(b=>b.disabled=0);ask.showModal()}   // open a challenge dialog
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded',async function main(){
   Object.defineProperty(i,"r",{get:()=>i.rVal,set:v=>place(i,i.rVal=v,i.cVal)})
   Object.defineProperty(i,"c",{get:()=>i.cVal,set:v=>place(i,i.rVal,i.cVal=v)})
   i.r=i.rVal;i.c=i.cVal
-  show()
+  show();try{if(sessionStorage.getItem('dr_snd')==='1'){toggleSound()}}catch(e){}
   document.onclick=e=>{                    // tile click steps toward it; click outside map steps that way (even across edge)
     if(e.target.closest`dialog,button,#belt`)return   // leave UI controls alone
     const t=e.target.closest`#M td`
