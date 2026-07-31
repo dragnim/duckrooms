@@ -421,3 +421,42 @@ dialog { background: var(--back); color: var(--spot); }
 #util, #left, #belt, #belt caption, #belt th, #side, #topbar, legend {
   color: #fdf6c8;
 }
+
+/* ===== VCR OSD Mono webfont — analog-horror monospace (Duckrooms) ===== */
+/* "100% Free" font by Riciery Leal (dafont.com/vcr-osd-mono.font), served as WOFF. */
+@font-face {
+  font-family: VCR;
+  src: local('VCR OSD Mono'),
+       url('https://fonts.cdnfonts.com/s/14798/VCR_OSD_MONO_1.001[1].woff') format('woff');
+  font-display: swap;
+}
+
+/* Apply VCR OSD Mono throughout the game UI, replacing Almendra ("Text"). */
+body,
+dialog, dialog p, dialog button, dialog input, dialog code, dialog .num,
+legend, legend button,
+th, fieldset,
+#belt, #belt caption, #left, #topbar button,
+#mini td .rc,
+#askr {
+  font-family: VCR, "VCR OSD Mono", monospace !important;
+}
+
+/* Black pixel-style stroke on ALL UI text, matching the BACKROOMS title look.
+   Applied universally; excludes the player (#i), its SVG duck, and paths. */
+body *:not(svg):not(path):not(#i) {
+  text-shadow:
+    -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000,
+    -1.5px  1.5px 0 #000, 1.5px  1.5px 0 #000,
+     0    -1.5px 0 #000, 0     1.5px 0 #000,
+    -1.5px  0    0 #000, 1.5px  0    0 #000;
+}
+/* Room name is the biggest heading -> heavier outline. */
+#left {
+  text-shadow:
+    -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px  2px 0 #000, 2px  2px 0 #000,
+     0   -2px 0 #000, 0    2px 0 #000,
+    -2px  0   0 #000, 2px  0   0 #000;
+  letter-spacing: 0.02em;
+}
