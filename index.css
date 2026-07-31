@@ -399,3 +399,17 @@ i,
   background: repeating-linear-gradient(0deg,
     rgba(0,0,0,0.6) 0px, rgba(0,0,0,0.6) 1px, transparent 1px, transparent 3px);
 }
+
+
+/* ===== Dark page background + minimap grid fix (Duckrooms) ===== */
+/* Page background follows the room's dark void so the lantern glow fades into
+   darkness instead of the bright --spot wallpaper (kills the double-fade). */
+html, body { background: var(--back); }
+/* Dialogs kept readable: give them their own light-on-dark surface. */
+dialog { background: var(--back); color: var(--spot); }
+
+/* The mini-map drew its grid lines with the (former) light page background showing
+   through the border-spacing gaps. Now the page is dark, so give the table its own
+   grid-line colour and re-establish the current-room highlight explicitly. */
+#mini { background: var(--wall); border-radius: 4px; }
+#mini td.now { background: var(--spot); }   /* current room: fluorescent highlight */
