@@ -60,7 +60,7 @@ const chk=()=>{
 }
 const count=()=>{let n=$$`#M b.m,#M b.d,#M b.M,#M b.D,#M b.j`.length   // uncollected stones here (for the tab title)
   $`#left`.textContent=j.name;$`#left`.title=j.name                 // room name (rune count now lives on the mini-map tile)
-  document.title=`${j.name} (${n}) - RuneMaster`}
+  document.title=`${j.name} (${n}) - Duckrooms`}
 const favico=w=>{                                    // dynamic svg favicon of the wall emoji
   let l=$`link[rel=icon]`??document.head.appendChild(Object.assign(document.createElement`link`,{rel:"icon"}))
   l.href="data:image/svg+xml,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="82" font-size="88" text-anchor="middle">${w}</text></svg>`)}
@@ -124,7 +124,7 @@ async function step(newR,newC){                      // move to / interact with 
       }else if(t.className=="o"){ask.r=newR;ask.c=newC;cheating?(ask.b=t,react(1)):openask(t,keys(j[t.id]))}   // cheat: walk through an unlocked door
       else if(~(g="mdMDj".indexOf(t.className))){show(i.r=newR,i.c=newC)   // rune stone: req-gated (prerequisite runes)
         let bi=$$`#belt b`.map(e=>e.id)
-        reqs(t).every(r=>~bi.indexOf(r))?(c=t,cheating?(ask.b=t,react(1)):openask(c,c.id+keys(j[c.id]))):(msgp.innerHTML="This rune stays sealed; you still need:<br>"+reqs(t).filter(r=>!~bi.indexOf(r)).map(b).join` `,msg.showModal())}   // cheat: auto-collect an available rune
+        reqs(t).every(r=>~bi.indexOf(r))?(c=t,cheating?(ask.b=t,react(1)):openask(c,c.id+keys(j[c.id]))):(msgp.innerHTML="This fragment stays sealed; you still need:<br>"+reqs(t).filter(r=>!~bi.indexOf(r)).map(b).join` `,msg.showModal())}   // cheat: auto-collect an available rune
       else if(t.className=="a"){show(i.r=newR,i.c=newC)   // free-standing 🍎: req-gated but non-blocking
         let bi=$$`#belt b`.map(e=>e.id)
         reqs(t).every(r=>~bi.indexOf(r))?(cheating?(ask.b=t,react(1)):openask(t,keys(j[t.id]))):(msgp.innerHTML="This apple is still guarded; you still need:<br>"+reqs(t).filter(r=>!~bi.indexOf(r)).map(b).join` `,msg.showModal())}   // cheat: auto-take an available apple
