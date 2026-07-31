@@ -353,3 +353,49 @@ i,
   border-width: 0.2rem;
   margin: 0 0.15rem;
 }
+
+
+/* ===== Backrooms theme add-ons (Duckrooms) ===== */
+/* Cubicle-panel walls: built on the room's --wall colour so each level keeps its own palette. */
+.w {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--wall) 85%, white 15%) 0%,
+    var(--wall) 100%) !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5), 0 2px 3px rgba(0,0,0,0.4) !important;
+}
+/* Wall glyph hidden so blocks read as blank partitions (JSON also blanks the emoji). */
+#M .w { color: transparent !important; text-shadow: none !important; }
+
+/* Blue rubber duck: no hue-rotate, so the player's fluorescent halo stays the theme colour. */
+#i svg { display: block; }
+
+/* Wide-angle claustrophobic vignette. */
+#vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 500;
+  background: radial-gradient(ellipse 120% 90% at 50% 50%,
+    rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 72%, rgba(10,8,0,0.85) 100%);
+}
+/* Flickering fluorescent light. */
+#flicker {
+  position: fixed; inset: 0; pointer-events: none; z-index: 501; mix-blend-mode: overlay;
+  background: radial-gradient(circle at 50% 40%, rgba(255,250,200,0.35), rgba(255,250,200,0) 60%);
+  animation: flick 3.2s steps(1) infinite;
+}
+@keyframes flick {
+  0%,7%,9%,17%,100% { opacity: 0.85; }
+  8% { opacity: 0.15; }
+  18% { opacity: 0.35; }
+  19% { opacity: 0.9; }
+  52%,53% { opacity: 0.25; }
+  54% { opacity: 0.88; }
+  77% { opacity: 0.5; }
+  78% { opacity: 0.95; }
+}
+@media (prefers-reduced-motion: reduce) { #flicker { animation: none; } }
+/* Analog-horror scanlines. */
+#scan {
+  position: fixed; inset: 0; pointer-events: none; z-index: 502; opacity: 0.12;
+  background: repeating-linear-gradient(0deg,
+    rgba(0,0,0,0.6) 0px, rgba(0,0,0,0.6) 1px, transparent 1px, transparent 3px);
+}
