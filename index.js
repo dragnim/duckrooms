@@ -284,5 +284,6 @@ function toggleSound() {
     _bgAudio.pause()
   }
   if (btn) btn.textContent = _soundOn ? '🔊' : '🔇'
+  const tb = document.getElementById('titlesound'); if (tb) tb.textContent = _soundOn ? '🔊' : '🔇'
 }
 window.toggleSound = toggleSound
