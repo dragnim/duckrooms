@@ -532,3 +532,15 @@ body {
   border-width: 0.16rem;
   margin: 0 0.06rem 0.06rem 0;
 }
+
+/* ===== Smaller duck: keep its beak inside the tile ===== */
+#i svg {
+  transform: scale(0.72);
+  transform-origin: center;
+}
+
+/* ===== Narrower Restart, matched to the mute button's height ===== */
+#topbar button {
+  font-size: 0.6rem;
+  padding: 0.15rem 0.4rem;
+}
