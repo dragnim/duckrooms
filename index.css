@@ -442,21 +442,8 @@ th, fieldset,
   font-family: VCR, "VCR OSD Mono", monospace !important;
 }
 
-/* Black pixel-style stroke on ALL UI text, matching the BACKROOMS title look.
-   Applied universally; excludes the player (#i), its SVG duck, and paths. */
-body *:not(svg):not(path):not(#i) {
-  text-shadow:
-    -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000,
-    -1.5px  1.5px 0 #000, 1.5px  1.5px 0 #000,
-     0    -1.5px 0 #000, 0     1.5px 0 #000,
-    -1.5px  0    0 #000, 1.5px  0    0 #000;
-}
-/* Room name is the biggest heading -> heavier outline. */
+/* Room name upright (Almendra's italic face no longer applies with VCR). */
 #left {
-  text-shadow:
-    -2px -2px 0 #000, 2px -2px 0 #000,
-    -2px  2px 0 #000, 2px  2px 0 #000,
-     0   -2px 0 #000, 0    2px 0 #000,
-    -2px  0   0 #000, 2px  0   0 #000;
+  font-style: normal;
   letter-spacing: 0.02em;
 }
