@@ -256,7 +256,7 @@ let _bgAudio, _soundOn = false
 function toggleSound() {
   const btn = document.getElementById('mute')
   if (!_bgAudio) {
-    _bgAudio = new Audio('01-oshkosh.mp3')
+    _bgAudio = new Audio('sfx/01-oshkosh.mp3')
     _bgAudio.loop = true
     _bgAudio.volume = 0.5
   }
