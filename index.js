@@ -1,6 +1,6 @@
 'use strict'
 let i,M,root,aski,askb,askp,ask,msg,msgp
-let j,g,c,rMin,cMin,rMax,cMax,mr=0,mc=0,cur,mem={},doors={},seen={},apples=[],atlas={},busy,cheating,moving
+let j,g,c,rMin,cMin,rMax,cMax,mr=0,mc=0,cur,mem={},doors={},seen={},apples=[],atlas={},busy,cheating,moving,godmode
 const KEY="runemaster2"                            // saved-progress key (bumped: 4×4 reshape renamed/added rooms)
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)]
 const td=(r,c)=>$("#r"+r+"c"+c)
@@ -103,6 +103,7 @@ const restore=()=>{
   return s
 }
 window.reset=()=>{localStorage.removeItem(KEY);location.reload()}   // wipe saved progress
+function toast(txt){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;bottom:2.2rem;transform:translateX(-50%);z-index:600;padding:0.5rem 1rem;background:rgba(20,18,8,0.92);color:#e9d84a;font-family:VCR,"VCR OSD Mono",monospace;font-size:1.1rem;letter-spacing:0.06em;border:2px solid #e9d84a;border-radius:6px;box-shadow:0 0 14px rgba(233,216,74,0.55);pointer-events:none;transition:opacity 0.3s;opacity:0';document.body.appendChild(t)}t.textContent=txt;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0'},1400)}
 window.cheat=(on=1)=>(cheating=on,`QA cheat ${on?"ON — walk into any met-prerequisite rune, unlocked door or apple to auto-take it (sealed ones still need their runes)":"off"}`)   // console QA aid
 const openask=(el,k)=>{askp.innerHTML=md(j[el.id].task);lb(k,j[el.id].expr??j[el.id].f);ask.b=el;aski.value="";$`#askr`.textContent="";$`#asks`.textContent="Submit";$$`#ask form button`.forEach(b=>b.disabled=0);ask.showModal()}   // open a challenge dialog
 async function step(newR,newC){                      // move to / interact with cell; keyboard + tap
@@ -117,7 +118,7 @@ async function step(newR,newC){                      // move to / interact with 
   if(0<=newR&&newR<=rMax&&0<=newC&&newC<=cMax){
     let t=td(newR,newC).children[0]
     if(t&&t.style.visibility!="hidden"){
-      if(t.className=="l"){
+      if(t.className=="l"){if(godmode){show(i.r=newR,i.c=newC);return}
         let bi=$$`#belt b`.map(e=>e.id)   // collected
         msgp.innerHTML="This door still needs:<br>"+reqs(t).filter(r=>!~bi.indexOf(r)).map(b).join` `   // only the runes you lack
         msg.showModal()
@@ -134,6 +135,7 @@ async function step(newR,newC){                      // move to / interact with 
   }finally{moving=0}
 }
 addEventListener('keydown',e=>{
+  if(e.key==='g'||e.key==='G'){if(document.getElementById('title')){return}godmode=!godmode;toast(godmode?'Godmode enabled':'Godmode disabled');e.preventDefault();e.stopPropagation();return}
   const up   =()=>newR=i.r-1
   const down =()=>newR=i.r+1
   const left =()=>newC=i.c-1
