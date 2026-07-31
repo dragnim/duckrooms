@@ -173,7 +173,7 @@ async function loadM(mr,mc){
   }
   if(cur!=null)mem[cur].html=M.innerHTML               // save the room we're leaving — only now the new one is secured
   cur=key
-  j=mem[key].j
+  j=mem[key].j;if(typeof _bgAudio!=='undefined'&&_bgAudio&&_soundOn){let _s='sfx/'+((j&&j.sound)||'01-oshkosh.mp3');if(_bgAudio.src.indexOf(_s)<0){_bgAudio.src=_s;_bgAudio.play().catch(()=>{})}}
   atlas[key]={w:j.theme.w,stones:[],apple:0}           // remember this room's wall + inventory (idempotent; migrates legacy entries)
   j.M.forEach(row=>(row.match(/.{1,2}/g)||[]).forEach(t=>{
     if("mdMDj".includes(t[0]))atlas[key].stones.push(t)   // rune stones (ids globally unique)
@@ -273,11 +273,11 @@ let _bgAudio, _soundOn = false
 function toggleSound() {
   const btn = document.getElementById('mute')
   if (!_bgAudio) {
-    _bgAudio = new Audio('sfx/01-oshkosh.mp3')
+    _bgAudio = new Audio('sfx/'+((j&&j.sound)||'01-oshkosh.mp3'))
     _bgAudio.loop = true
     _bgAudio.volume = 0.5
   }
-  _soundOn = !_soundOn
+  _soundOn = !_soundOn;{let _s='sfx/'+((j&&j.sound)||'01-oshkosh.mp3');if(_bgAudio.src.indexOf(_s)<0)_bgAudio.src=_s;}
   if (_soundOn) {
     _bgAudio.play().catch(() => {})
   } else {
