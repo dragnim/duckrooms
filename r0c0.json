@@ -1,11 +1,11 @@
 {
  "name": "The Grove",
  "theme": {
-  "w": "🌳",
-  "wall": "rgba(34,90,34,0.4)",
-  "back": "#101a12",
-  "spot": "#dff0df"
- },
+"w": " ",
+"wall": "rgba(120,104,40,0.65)",
+"back": "#17140a",
+"spot": "#e9dc73"
+},
  "M": [
   "w w w w l4w w w w w w ",
   "w   m⍳    d×        w ",
