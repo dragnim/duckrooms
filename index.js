@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded',async function main(){
   // Title/landing screen: dismiss on first key or click (event consumed so it never moves the duck)
   const _title = document.getElementById('title')
   if (_title) {
-    const _enter = e => {if(e.type==='click'&&e.target&&e.target.closest&&e.target.closest('#titlesound')){return}
+    const _enter = e => {if(e.type==='click'&&e.target&&e.target.closest&&e.target.closest('#title button,#title a,#title input,#title select,#title label')){return}
       e.preventDefault(); e.stopPropagation()
       removeEventListener('keydown', _enter, true)
       removeEventListener('click', _enter, true)
