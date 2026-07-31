@@ -1,6 +1,6 @@
 'use strict'
 let i,M,root,aski,askb,askp,ask,msg,msgp
-let j,g,c,rMin,cMin,rMax,cMax,mr=0,mc=0,cur,mem={},doors={},seen={},apples=[],atlas={},busy,cheating,moving,godmode
+let j,g,c,rMin,cMin,rMax,cMax,mr=0,mc=0,cur,mem={},doors={},seen={},apples=[],atlas={},busy,cheating,moving,godmode,_levord=[[0,0],[0,-1],[0,1],[0,2],[-1,0],[-1,-1],[-1,1],[-1,2],[1,0],[1,-1],[1,1],[1,2],[-2,0],[-2,-1],[-2,1],[-2,2]]
 const KEY="runemaster2"                            // saved-progress key (bumped: 4×4 reshape renamed/added rooms)
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)]
 const td=(r,c)=>$("#r"+r+"c"+c)
@@ -136,6 +136,7 @@ async function step(newR,newC){                      // move to / interact with 
 }
 addEventListener('keydown',e=>{
   if(e.key==='g'||e.key==='G'){if(document.getElementById('title')){return}godmode=!godmode;toast(godmode?'Godmode enabled':'Godmode disabled');e.preventDefault();e.stopPropagation();return}
+  if(e.shiftKey&&(e.key==='ArrowRight'||e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='ArrowDown')){e.preventDefault();e.stopPropagation();let _n=_levord.findIndex(p=>p[0]===mr&&p[1]===mc);if(_n<0)_n=0;let _dir=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:-1;let _t=(_n+_dir+_levord.length)%_levord.length;(async()=>{let _p=_levord[_t];if(await loadM(_p[0],_p[1])){mr=_p[0];mc=_p[1];i.rVal=Math.floor(rMax/2);i.cVal=Math.floor(cMax/2);i.r=i.rVal;i.c=i.cVal;show();toast(j&&j.name?j.name:(mr+','+mc))}})();return}
   const up   =()=>newR=i.r-1
   const down =()=>newR=i.r+1
   const left =()=>newC=i.c-1
@@ -195,7 +196,7 @@ document.addEventListener('DOMContentLoaded',async function main(){
   // Title/landing screen: dismiss on first key or click (event consumed so it never moves the duck)
   const _title = document.getElementById('title')
   if (_title) {
-    const _enter = e => {
+    const _enter = e => {if(e.type==='click'&&e.target&&e.target.closest&&e.target.closest('#titlesound')){return}
       e.preventDefault(); e.stopPropagation()
       removeEventListener('keydown', _enter, true)
       removeEventListener('click', _enter, true)
