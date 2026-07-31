@@ -457,3 +457,13 @@ dialog code, dialog .num, dialog input,
 b {
   font-family: APL, monospace !important;
 }
+
+
+/* ===== Sidebar sizing for VCR (Duckrooms) ===== */
+/* VCR OSD Mono is wider/taller than Almendra, so the renamed "…Fragments"
+   labels overflowed the utilities panel. Trim the belt caption + labels so
+   "Collected Fragments" fits on one line and the list never scrolls. */
+#belt caption { font-size: 0.9rem; line-height: 1.1; margin-bottom: 0.1rem; }
+#belt th { font-size: 0.78rem; line-height: 1.35rem; }
+#belt td { min-height: 1.35rem; }
+#belt tr { gap: 0.15rem; }
