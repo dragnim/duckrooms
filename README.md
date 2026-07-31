@@ -1,6 +1,6 @@
 # Duckrooms
 
-_Wander the endless backrooms and piece together the Fragments_
+_Wander the endless Duckrooms and piece together the Fragments_
 
 Concept: Brian Becker
 
