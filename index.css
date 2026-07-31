@@ -584,3 +584,24 @@ body {
 }
 @keyframes titleblink { 0%, 60% { opacity: 0.75 } 61%, 100% { opacity: 0.12 } }
 @keyframes titleflick { 0%, 97%, 100% { opacity: 1 } 97.5% { opacity: 0.82 } 98.5% { opacity: 1 } 99% { opacity: 0.7 } }
+
+
+/* Sound toggle on the title screen */
+#titlesound {
+  margin-top: 1.8rem;
+  cursor: pointer;
+  background: rgba(20, 18, 8, 0.6);
+  color: #e9dc73;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.4rem 0.7rem;
+  border: 2px solid rgba(233, 220, 115, 0.45);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(233, 220, 115, 0.2);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+#titlesound:hover {
+  border-color: rgba(233, 220, 115, 0.9);
+  box-shadow: 0 0 16px rgba(233, 220, 115, 0.5);
+}
+#titlesound:active { transform: scale(0.94); }
