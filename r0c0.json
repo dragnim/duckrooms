@@ -1,5 +1,6 @@
 {
   "name": "Oshkosh, Wisconsin",
+  "sound": "01-oshkosh.mp3",
   "theme": {
     "w": " ",
     "wall": "rgba(120,104,40,0.65)",
