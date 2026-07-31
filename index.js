@@ -190,6 +190,20 @@ async function loadM(mr,mc){
   return 1                                             // signal a successful load (see step()'s edge crossings)
 }
 document.addEventListener('DOMContentLoaded',async function main(){
+  // Title/landing screen: dismiss on first key or click (event consumed so it never moves the duck)
+  const _title = document.getElementById('title')
+  if (_title) {
+    const _enter = e => {
+      e.preventDefault(); e.stopPropagation()
+      removeEventListener('keydown', _enter, true)
+      removeEventListener('click', _enter, true)
+      _title.style.transition = 'opacity 0.4s'
+      _title.style.opacity = '0'
+      setTimeout(() => _title.remove(), 450)
+    }
+    addEventListener('keydown', _enter, true)   // capture phase: runs before the game's movement handlers
+    addEventListener('click', _enter, true)
+  }
   i=$`#i`;M=$`#M`;root=$`#root`
   aski=$`#aski`;askb=$`#askb`;askp=$`#askp`
   ask=$`#ask`;msg=$`#msg`;msgp=$`#msgp`
