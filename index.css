@@ -431,13 +431,15 @@ dialog { background: var(--back); color: var(--spot); }
   font-display: swap;
 }
 
-/* Apply VCR OSD Mono throughout the game UI, replacing Almendra ("Text"). */
+/* Apply VCR OSD Mono to prose/UI chrome, replacing Almendra ("Text").
+   NOTE: deliberately excludes anything that renders APL glyphs (dialog code,
+   dialog .num, dialog input, #askb buttons, and inline <b> rune stones/digits) —
+   those must stay in the APL (SAX2) font or the glyphs won't display. */
 body,
-dialog, dialog p, dialog button, dialog input, dialog code, dialog .num,
+dialog, dialog p, dialog button,
 legend, legend button,
 th, fieldset,
-#belt, #belt caption, #left, #topbar button,
-#mini td .rc,
+#belt caption, #left, #topbar button,
 #askr {
   font-family: VCR, "VCR OSD Mono", monospace !important;
 }
@@ -446,4 +448,12 @@ th, fieldset,
 #left {
   font-style: normal;
   letter-spacing: 0.02em;
+}
+
+/* APL guard: keep every APL-glyph element in the SAX2 font, overriding VCR.
+   Mirrors the original APL rule so puzzle expressions/digits/rune stones render. */
+#askb > button,
+dialog code, dialog .num, dialog input,
+b {
+  font-family: APL, monospace !important;
 }
