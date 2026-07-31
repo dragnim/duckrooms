@@ -616,9 +616,18 @@ body {
   border-radius: 2px;
   box-shadow: inset 0 0 0 1px rgba(140,155,148,0.35);
 }
-#M.pool td{
-  background-image:
-    linear-gradient(to right, rgba(30,90,80,0.28) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30,90,80,0.28) 1px, transparent 1px);
-  background-size: 33.33% 33.33%;
-}
+#M.pool td{ background-image: none; }
+/* Poolrooms: the water reveal is a duck-following masked overlay (see #poolOv in JS),
+   so neutralise the player's spot-coloured glow on this level. */
+body.poolbody > i{ box-shadow: none; background: transparent; }
+#poolOv{ position: fixed; pointer-events: none; z-index: 49; }
+/* Readable sidebar text on the light Poolrooms page */
+body.poolbody #util,
+body.poolbody #left,
+body.poolbody #belt,
+body.poolbody #belt caption,
+body.poolbody #belt th,
+body.poolbody #side,
+body.poolbody #topbar,
+body.poolbody legend{ color: #0b3b38; }
+
