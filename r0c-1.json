@@ -1,12 +1,13 @@
 {
- "name": "Reckoner’s Forge",
- "theme": {
-  "w": "🧱",
-  "wall": "rgba(200,120,60,0.4)",
-  "back": "#1a0f08",
-  "spot": "#ffe8d0"
- },
- "M": [
+ "name": "Poolrooms",
+  "sound": "02-poolrooms.mp3",
+  "theme": {
+    "w": " ",
+    "wall": "rgba(214,240,248,0.55)",
+    "back": "#08202b",
+    "spot": "#c7ecf5"
+  },
+  "M": [
   "w w w w w   w w w w w ",
   "w       w       w   w ",
   "w   w   w   w   w   w ",
