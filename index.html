@@ -2,7 +2,7 @@
 <html lang="en" id="root">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RuneMaster</title>
+<title>Duckrooms</title>
 <link rel="stylesheet" href="index.css"/>
 <script src="index.js"></script>
 </head>
@@ -17,17 +17,17 @@
 <input id="aski" inputmode="none" autofocus autocomplete="off" spellcheck="false" onkeydown="if(event.key=='Enter')ans(aski.value)">
 <p><button id="asks" type="button" onclick="ans(aski.value)">Submit</button> <button type="button" onclick="aski.value='';ask.close()">Cancel</button> <span id="askr" aria-live="polite"></span></p>
 </form>
-<fieldset><legend> Allowed runes — click to insert </legend><div id="askb"></div></fieldset>
+<fieldset><legend> Allowed fragments — click to insert </legend><div id="askb"></div></fieldset>
 </dialog>
 <i id="i"><svg id="duck" viewBox="0 0 100 100" width="100%" height="100%"><ellipse cx="52" cy="66" rx="34" ry="24" fill="#1f7ae0"/><path d="M18 60 q-14 -6 -10 8 q10 4 14 -2 z" fill="#1f7ae0"/><circle cx="66" cy="38" r="20" fill="#2a8bf2"/><ellipse cx="60" cy="34" rx="7" ry="5" fill="#7ec0ff" opacity="0.7"/><circle cx="70" cy="34" r="3.4" fill="#0b1b33"/><circle cx="71.2" cy="32.8" r="1" fill="#fff"/><path d="M80 40 q18 -2 16 6 q-4 6 -16 2 z" fill="#ffab2e"/><path d="M40 62 q16 -10 30 -2 q-8 12 -30 6 z" fill="#1667c4"/></svg></i>
 <table id="M"></table>
 <div id="util">
 <table id="belt">
-<caption>Collected runes</caption>
-<tr><th>Emerald:</th><td></td></tr>
-<tr><th>Ruby:</th><td></td></tr>
-<tr><th>Sapphire:</th><td></td></tr>
-<tr><th>Amethyst:</th><td></td></tr>
+<caption>Collected Fragments</caption>
+<tr><th>Exit Fragments:</th><td></td></tr>
+<tr><th>Alarm Fragments:</th><td></td></tr>
+<tr><th>Pool Fragments:</th><td></td></tr>
+<tr><th>Static Fragments:</th><td></td></tr>
 <tr><th>Diamond:</th><td></td></tr>
 </table>
 <div id="side">
