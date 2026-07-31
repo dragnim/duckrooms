@@ -1,147 +1,147 @@
 {
- "name": "The Grove",
- "theme": {
-"w": " ",
-"wall": "rgba(120,104,40,0.65)",
-"back": "#17140a",
-"spot": "#e9dc73"
-},
- "M": [
-  "w w w w l4w w w w w w ",
-  "w   m⍳    d×        w ",
-  "w   w w     w       w ",
-  "w   d+    d,w   M/  w ",
-  "w   w   D∘  w w w   w ",
-  "l3  w               w ",
-  "w l0w w w w w w w w w ",
-  "w   j{  w d≡    j(  w ",
-  "w w w   w   w   w   l1",
-  "w               w aAw ",
-  "w w w   w w w w w w w "
- ],
- "m⍳": {
-  "req": "",
-  "add": "",
-  "task": "{m⍳} is the _emerald rune of counting_, conjuring every whole number from 1 up to the number on its right. `n` mossy steppingstones cross the grove brook — name them in order, first to last.",
-  "expr": "⍳n←9+?9"
- },
- "d×": {
-  "req": "",
-  "add": "",
-  "task": "{d×} is the _ruby rune of multiplication_, scaling each number on its right by the number on its left. Four runestones hold the powers `p`; a charm of strength `s` magnifies each. What powers result?",
-  "expr": "(s←100)×p←4?90"
- },
- "d+": {
-  "req": "",
-  "add": "",
-  "task": "{d+} is the _ruby rune of addition_, adding what lies on its left to what lies on its right. A wayfarer carries `a` coins and finds a cache of `b` more. How many coins in all?",
-  "expr": "(a←?99)+b←?99"
- },
- "d,": {
-  "req": "",
-  "add": "",
-  "task": "{d,} is the _ruby rune of joining_, weaving what lies on its left onto what lies on its right into a single strand. Bind the two sigils `x` and `y` into one continuous sigil.",
-  "expr": "∊(x y)←'ELD' 'FIRE'"
- },
- "D∘": {
-  "req": "d+",
-  "add": "",
-  "task": "{D∘} is the _amethyst rune of tabulation_ — set to the left of another rune, it lays out a table, applying that rune between every value on one side and every value on the other. Using {d+}, raise an addition table from the numbers `n`, each summed with each.",
-  "expr": "n∘.+n←3?9"
- },
- "M/": {
-  "req": "d×m⍳",
-  "add": "",
-  "task": "{M/} is the _sapphire rune of insertion_ — set to the right of a rune, it slips that rune between all the items on its right. The _factorial_ of `n` is every whole number from 1 to `n` multiplied together — weave {d×} through {m⍳}. Find the factorial of `n`.",
-  "expr": "×/⍳n←3+?6"
- },
- "l0": {
-  "req": "d,j'",
-  "add": "E L D F I R ",
-  "task": "Deeper in the grove, the old oaks answer only to their kin. A word set between quote-marks is a text rune. Bind the two elder-words `'ELD'` and `'FIRE'` into the single strand `ELDFIRE`.",
-  "expr": "'ELD','FIRE'"
- },
- "j{": {
-  "req": "d×M/m⍳",
-  "add": "",
-  "task": "{j{} is the _diamond of binding_ — a pair of braces `{ }` that captures an expression into a rune of your own making, with `⍵` standing for whatever is set on its right. Forge a rune that returns the factorial of its argument.\n\n`{answer} 4` gives `24`, and `{answer} 6` gives `720`.",
-  "f": "{×/⍳⍵}",
-  "a": [
-   "2",
-   "3",
-   "4",
-   "5",
-   "6",
-   "7",
-   "8",
-   "9",
-   "10",
-   "10+?3"
-  ]
- },
- "d≡": {
-  "req": "m∪j{",
-  "add": "",
-  "task": "{d≡} is the _ruby rune of matching_, giving 1 when what lies on its left is exactly the same as what lies on its right, and 0 otherwise. Calling on {j{} and {m∪}, forge a rune that tells whether a list is all distinct — 1 if every item differs, 0 if any repeats.\n\n`{answer} 1 2 3 2 1` gives 0; `{answer} 1 16 12` gives 1.",
-  "f": "{⍵≡∪⍵}",
-  "a": [
-   "1 2 3 2 1",
-   "'DYALOG APL'",
-   "1 16 12",
-   "'DYALOG'",
-   "{⍵[(5+?5)?≢⍵]}(⎕A~'AEIOUY')",
-   "?99⍴⍨5+?5"
-  ]
- },
- "l1": {
-  "req": "d,",
-  "add": "",
-  "task": "The eastern arch of the grove yields to a wayfarer who can bind two words into one — weave `x` onto `y`.",
-  "expr": "(x←'GROVE'),y←'GATE'"
- },
- "j(": {
-  "req": "m⍳D∘d≡j{",
-  "add": "",
-  "task": "{j(} is the _diamond of precedence_ — a pair of parentheses `( )` binding an expression together so a rune takes it whole. An _identity matrix_ of size `⍵` is a square table of 0s bearing 1s on its diagonal. Drawing on {m⍳}, {D∘} and {d≡}, forge a rune that raises an identity matrix of the given size.\n\n`{answer} 3` gives a 3×3 identity table.",
-  "f": "{(⍳⍵)∘.≡⍳⍵}",
-  "a": [
-   "2",
-   "3",
-   "4",
-   "5",
-   "6",
-   "?9"
-  ]
- },
- "l3": {
-  "req": "d×D∘",
-  "add": "",
-  "task": "A soot-blackened door seals the western tunnel to the forge, its face scored with an empty lattice. Raise a multiplication table from the tallies `t`, each times each, to kindle the iron and pass.",
-  "expr": "t∘.×t←2+?4"
- },
- "l4": {
-  "req": "d,j{",
-  "add": "",
-  "task": "The north road runs to Weaver's Hall, where each thread is doubled at the loom. Forge a spell that lays the strand `⍵` down, then again, end to end.\n\n`{answer} 1 2 3` gives `1 2 3 1 2 3`.",
-  "f": "{⍵,⍵}",
-  "a": [
-   "1 2 3",
-   "5 9",
-   "3 1 4 1 5",
-   "2 7 1 8"
-  ]
- },
- "aA": {
-  "req": "d+M/m∪D∘d≡j{j(",
-  "add": "",
-  "task": "An ancient warden seals the eastern arch. It speaks a final riddle: for a hoard `⍵`, forge a rune that tallies how many times each _distinct_ treasure appears within it. Answer truly, and the way onward opens.\n\n`{answer} 'MISSISSIPPI'` gives `1 4 4 2` — one M, four I, four S, two P.",
-  "f": "{+/(∪⍵)∘.≡⍵}",
-  "a": [
-   "2 7 1 8 2 8 1 8 2 8",
-   "'MISSISSIPPI'",
-   "5 3 6 6 3 5 5 4 1 6 1 6 4 6 3 2 3 2 6 3 1 4 4 3 5",
-   "{⍵[?(5+?5)⍴≢⍵]}'AEIOUY'",
-   "?5⍴⍨5+?5"
-  ]
- }
+  "name": "Oshkosh, Wisconsin",
+  "theme": {
+    "w": " ",
+    "wall": "rgba(120,104,40,0.65)",
+    "back": "#17140a",
+    "spot": "#e9dc73"
+  },
+  "M": [
+    "w w w w l4w w w w w w ",
+    "w   m⍳    d×        w ",
+    "w   w w     w       w ",
+    "w   d+    d,w   M/  w ",
+    "w   w   D∘  w w w   w ",
+    "l3  w               w ",
+    "w l0w w w w w w w w w ",
+    "w   j{  w d≡    j(  w ",
+    "w w w   w   w   w   l1",
+    "w               w aAw ",
+    "w w w   w w w w w w w "
+  ],
+  "m⍳": {
+    "req": "",
+    "add": "",
+    "task": "{m⍳} is the _Exit Fragment of counting_, conjuring every whole number from 1 up to the number on its right. `n` water-stained ceiling tiles run the length of this corridor — number them in order, first to last.",
+    "expr": "⍳n←9+?9"
+  },
+  "d×": {
+    "req": "",
+    "add": "",
+    "task": "{d×} is the _Alarm Fragment of multiplication_, scaling each number on its right by the number on its left. Four flickering fixtures draw the wattages `p`; a surge of strength `s` amplifies each. What wattages result?",
+    "expr": "(s←100)×p←4?90"
+  },
+  "d+": {
+    "req": "",
+    "add": "",
+    "task": "{d+} is the _Alarm Fragment of addition_, adding what lies on its left to what lies on its right. You are carrying `a` almond-water bottles and find a cache of `b` more. How many in all?",
+    "expr": "(a←?99)+b←?99"
+  },
+  "d,": {
+    "req": "",
+    "add": "",
+    "task": "{d,} is the _Alarm Fragment of joining_, weaving what lies on its left onto what lies on its right into a single strip. Splice the two lengths of peeling wallpaper `x` and `y` into one continuous strip.",
+    "expr": "∊(x y)←'ELD' 'FIRE'"
+  },
+  "D∘": {
+    "req": "d+",
+    "add": "",
+    "task": "{D∘} is the _Static Fragment of tabulation_ — set to the left of another Fragment, it lays out a grid, applying that Fragment between every value on one side and every value on the other. Using {d+}, raise an addition grid from the numbers `n`, each summed with each.",
+    "expr": "n∘.+n←3?9"
+  },
+  "M/": {
+    "req": "d×m⍳",
+    "add": "",
+    "task": "{M/} is the _Pool Fragment of insertion_ — set to the right of a Fragment, it slips that Fragment between all the items on its right. The _factorial_ of `n` is every whole number from 1 to `n` multiplied together — weave {d×} through {m⍳}. Find the factorial of `n`.",
+    "expr": "×/⍳n←3+?6"
+  },
+  "l0": {
+    "req": "d,j'",
+    "add": "E L D F I R ",
+    "task": "Deeper in the office maze, a locked door hums under the fluorescents. A word set between quote-marks is a text Fragment. Splice the two taped labels `'ELD'` and `'FIRE'` into the single strip `ELDFIRE`.",
+    "expr": "'ELD','FIRE'"
+  },
+  "j{": {
+    "req": "d×M/m⍳",
+    "add": "",
+    "task": "{j{} is the _Core anomaly of binding_ — a pair of braces `{ }` that captures an expression into a Fragment of your own making, with `⍵` standing for whatever is set on its right. Forge a Fragment that returns the factorial of its argument.\n\n`{answer} 4` gives `24`, and `{answer} 6` gives `720`.",
+    "f": "{×/⍳⍵}",
+    "a": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "10+?3"
+    ]
+  },
+  "d≡": {
+    "req": "m∪j{",
+    "add": "",
+    "task": "{d≡} is the _Alarm Fragment of matching_, giving 1 when what lies on its left is exactly the same as what lies on its right, and 0 otherwise. Calling on {j{} and {m∪}, forge a Fragment that tells whether a list is all distinct — 1 if every item differs, 0 if any repeats.\n\n`{answer} 1 2 3 2 1` gives 0; `{answer} 1 16 12` gives 1.",
+    "f": "{⍵≡∪⍵}",
+    "a": [
+      "1 2 3 2 1",
+      "'DYALOG APL'",
+      "1 16 12",
+      "'DYALOG'",
+      "{⍵[(5+?5)?≢⍵]}(⎕A~'AEIOUY')",
+      "?99⍴⍨5+?5"
+    ]
+  },
+  "l1": {
+    "req": "d,",
+    "add": "",
+    "task": "A doorway marked with a dead EXIT sign will open for anyone who can splice two labels into one — weave `x` onto `y`.",
+    "expr": "(x←'GROVE'),y←'GATE'"
+  },
+  "j(": {
+    "req": "m⍳D∘d≡j{",
+    "add": "",
+    "task": "{j(} is the _Core anomaly of precedence_ — a pair of parentheses `( )` binding an expression together so a Fragment takes it whole. An _identity matrix_ of size `⍵` is a square grid of 0s bearing 1s on its diagonal. Drawing on {m⍳}, {D∘} and {d≡}, forge a Fragment that raises an identity grid of the given size.\n\n`{answer} 3` gives a 3×3 identity grid.",
+    "f": "{(⍳⍵)∘.≡⍳⍵}",
+    "a": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "?9"
+    ]
+  },
+  "l3": {
+    "req": "d×D∘",
+    "add": "",
+    "task": "A scorched door seals the maintenance passage, its face scored with an empty grid. Raise a multiplication grid from the counts `t`, each times each, to trip the breaker and pass.",
+    "expr": "t∘.×t←2+?4"
+  },
+  "l4": {
+    "req": "d,j{",
+    "add": "",
+    "task": "The north hall runs to the humming server room, where every signal is echoed once. Forge a routine that lays the strip `⍵` down, then again, end to end.\n\n`{answer} 1 2 3` gives `1 2 3 1 2 3`.",
+    "f": "{⍵,⍵}",
+    "a": [
+      "1 2 3",
+      "5 9",
+      "3 1 4 1 5",
+      "2 7 1 8"
+    ]
+  },
+  "aA": {
+    "req": "d+M/m∪D∘d≡j{j(",
+    "add": "",
+    "task": "A warden of the level guards the far EXIT. It poses a final test: for a jumble `⍵`, forge a Fragment that tallies how many times each _distinct_ item appears within it. Answer truly, and the way onward opens.\n\n`{answer} 'MISSISSIPPI'` gives `1 4 4 2` — one M, four I, four S, two P.",
+    "f": "{+/(∪⍵)∘.≡⍵}",
+    "a": [
+      "2 7 1 8 2 8 1 8 2 8",
+      "'MISSISSIPPI'",
+      "5 3 6 6 3 5 5 4 1 6 1 6 4 6 3 2 3 2 6 3 1 4 4 3 5",
+      "{⍵[?(5+?5)⍴≢⍵]}'AEIOUY'",
+      "?5⍴⍨5+?5"
+    ]
+  }
 }
