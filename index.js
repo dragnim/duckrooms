@@ -186,7 +186,7 @@ async function loadM(mr,mc){
   if(j.theme.wall)root.style.setProperty("--wall",j.theme.wall)
   if(j.theme.back)root.style.setProperty("--back",j.theme.back)
   if(j.theme.spot)root.style.setProperty("--spot",j.theme.spot)
-  favico(j.theme.w)
+  favico(j.theme.w);{let _mm=document.getElementById('M');if(_mm)_mm.classList.toggle('pool',!!(j.theme&&j.theme.grid))}
   let first=$$`#M td`[0]     ;rMin=getR(first);cMin=getC(first)
   let last =$$`#M td`.at(-1) ;rMax=getR(last );cMax=getC(last )
   chk();count();mini();fit()
