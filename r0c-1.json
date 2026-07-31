@@ -3,9 +3,10 @@
   "sound": "02-poolrooms.mp3",
   "theme": {
     "w": " ",
-    "wall": "rgba(214,240,248,0.55)",
-    "back": "#08202b",
-    "spot": "#c7ecf5"
+    "wall": "#f6f4ea",
+    "back": "#6ac2b0",
+    "spot": "#eaf6f1",
+    "grid": true
   },
   "M": [
   "w w w w w   w w w w w ",
