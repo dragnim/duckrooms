@@ -15,24 +15,20 @@
   user-select: none;
 }
 html {
-  --emerald: rgb(0, 73, 73);
-  --l-emerald: rgba(140, 214, 209, 0.85);
-  --ruby: rgb(146, 0, 0);
-  --l-ruby: rgba(240, 184, 184, 0.85);
-  --sapphire: rgb(0, 109, 219);
-  --l-sapphire: rgba(158, 205, 250, 0.85);
-  --amethyst: rgb(73, 0, 146);
-  --l-amethyst: rgba(206, 176, 236, 0.85);
-  --diamond: #222;
+  --emerald: rgb(19, 138, 74); /* Exit: EXIT-sign green */
+  --l-emerald: rgba(120, 240, 150, 0.9);
+  --ruby: rgb(176, 22, 22); /* Alarm: alarm red */
+  --l-ruby: rgba(255, 150, 120, 0.9);
+  --sapphire: rgb(0, 150, 160); /* Pool: chlorine cyan */
+  --l-sapphire: rgba(150, 240, 240, 0.9);
+  --amethyst: rgb(90, 90, 96); /* Static: TV-static grey */
+  --l-amethyst: rgba(220, 220, 225, 0.9);
+  --diamond: rgb(60, 30, 8); /* Core: warm reactor glow */
   --l-diamond: radial-gradient(
     circle at 50% 40%,
-    rgba(255, 255, 255, 0.90),
-    rgba(255,   0,  64, 0.32) 24%,
-    rgba(255, 170,   0, 0.32) 38%,
-    rgba( 60, 200,   0, 0.32) 52%,
-    rgba(  0, 150, 255, 0.32) 66%,
-    rgba(150,   0, 220, 0.32) 80%,
-    rgba(255, 255, 255, 0.55)
+    rgba(255, 230, 150, 0.95),
+    rgba(255, 140,   0, 0.5) 45%,
+    rgba(180,  40,   0, 0.5)
   );
   --gem-edge: rgba(255, 255, 255, 0.6);
   --speed: 0.5s;
@@ -467,3 +463,77 @@ b {
 #belt th { font-size: 0.78rem; line-height: 1.35rem; }
 #belt td { min-height: 1.35rem; }
 #belt tr { gap: 0.15rem; }
+
+/* ===== Backrooms atmosphere: CRT scanlines + fluorescent flicker ===== */
+#scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14) 0px,
+    rgba(0, 0, 0, 0.14) 1px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  mix-blend-mode: multiply;
+  animation: flicker 6s steps(1) infinite;
+}
+body {
+  animation: hum 5s ease-in-out infinite;
+}
+@keyframes hum {
+  0%, 100% { filter: brightness(1); }
+  45% { filter: brightness(1.04); }
+  50% { filter: brightness(0.97); }
+  55% { filter: brightness(1.03); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  97% { opacity: 1; }
+  97.5% { opacity: 0.4; }
+  98% { opacity: 1; }
+  98.5% { opacity: 0.55; }
+  99% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  #scanlines { animation: none; }
+}
+
+/* ===== Themed Restart + mute buttons ===== */
+#topbar button {
+  font-family: VCR, monospace;
+  background: #0d0b05;
+  color: var(--spot);
+  border: 0.12rem solid #6b6636;
+  border-radius: 0;
+  padding: 0.15rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: inset 0 0 0.4rem rgba(233, 220, 115, 0.15);
+  cursor: pointer;
+}
+#topbar button:hover {
+  background: #1a1608;
+}
+#mute {
+  padding: 0.15rem 0.4rem;
+  margin-left: 0.4rem;
+  line-height: 1;
+  text-transform: none;
+}
+
+/* ===== Full room name: wrap instead of truncating ===== */
+#topbar {
+  align-items: flex-start;
+}
+#left {
+  font-size: 0.66rem;
+  letter-spacing: 0;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.05;
+}
