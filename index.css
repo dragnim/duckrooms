@@ -542,3 +542,45 @@ body {
   font-size: 0.6rem;
   padding: 0.15rem 0.4rem;
 }
+
+/* === Title / landing screen (dismissed on first key/click) === */
+#title {
+  position: fixed;
+  inset: 0;
+  z-index: 499;               /* below the scan/flicker/vignette overlays so CRT texture crosses it */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  background: rgb(15, 13, 7);
+  font-family: VCR, "VCR OSD Mono", monospace;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#title h1 {
+  margin: 0;
+  color: var(--spot, #e9dc73);
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 1.2rem rgba(233, 220, 115, 0.35), 0 0 0.3rem rgba(233, 220, 115, 0.6);
+  animation: titleflick 4.5s steps(1) infinite;
+}
+#title .tag {
+  color: rgba(233, 220, 115, 0.8);
+  font-size: clamp(0.85rem, 2.4vw, 1.35rem);
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0 1rem;
+}
+#title .sub {
+  margin-top: 1.4rem;
+  color: rgba(233, 220, 115, 0.5);
+  font-size: clamp(0.75rem, 2vw, 1.05rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: titleblink 1.6s steps(1) infinite;
+}
+@keyframes titleblink { 0%, 60% { opacity: 0.75 } 61%, 100% { opacity: 0.12 } }
+@keyframes titleflick { 0%, 97%, 100% { opacity: 1 } 97.5% { opacity: 0.82 } 98.5% { opacity: 1 } 99% { opacity: 0.7 } }
